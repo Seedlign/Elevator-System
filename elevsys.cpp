@@ -33,6 +33,17 @@ void viewLogFile() {
     }
 }
 
+void clearLogFile() {
+    ofstream logFile("elevator_log.txt", ios::trunc); // Open in truncation mode to clear the file
+    if (logFile.is_open()) {
+        logFile.close();
+        cout << "Log file cleared successfully.\n";
+        logActivity("Log file cleared.");
+    } else {
+        cout << "Error: Unable to open log file!\n";
+    }
+}
+
 class Queue {
     int data[MAX_REQUESTS];
     int front, rear;
@@ -77,7 +88,7 @@ public:
 class PrioQueue {
     int data[MAX_REQUESTS];
     int size;
-    bool isMaxHeap; // true for max-heap, false for min-heap
+    bool isMaxHeap;
 
 public:
     PrioQueue(bool isMaxHeap = true) : size(0), isMaxHeap(isMaxHeap) {}
@@ -99,13 +110,11 @@ public:
         size++;
         int i = size - 1;
         if (isMaxHeap) {
-            // Max-heap: prioritize higher values
             while (i > 0 && data[(i - 1) / 2] < data[i]) {
                 swap(data[i], data[(i - 1) / 2]);
                 i = (i - 1) / 2;
             }
         } else {
-            // Min-heap: prioritize lower values
             while (i > 0 && data[(i - 1) / 2] > data[i]) {
                 swap(data[i], data[(i - 1) / 2]);
                 i = (i - 1) / 2;
@@ -127,7 +136,6 @@ public:
             int right = 2 * i + 2;
             int largest = i;
             if (isMaxHeap) {
-                // Max-heap logic
                 if (left < size && data[left] > data[largest]) {
                     largest = left;
                 }
@@ -135,7 +143,6 @@ public:
                     largest = right;
                 }
             } else {
-                // Min-heap logic
                 if (left < size && data[left] < data[largest]) {
                     largest = left;
                 }
@@ -168,12 +175,10 @@ public:
         cout << "\n";
     }
 
-    // Public method to access the data array
     int* getData() {
         return data;
     }
 
-    // Public method to access the size
     int getSize() {
         return size;
     }
@@ -219,10 +224,10 @@ public:
 class Elevator {
     int currentFloor;
     string direction;
-    PrioQueue pickQueue; // Max-heap for picking up
-    PrioQueue dropQueue; // Min-heap for dropping off
+    PrioQueue pickQueue;
+    PrioQueue dropQueue;
     Stack history;
-    bool isFailed; // Flag to indicate if the elevator has failed
+    bool isFailed;
 
 public:
     Elevator() : currentFloor(1), direction("idle"), pickQueue(true), dropQueue(false), isFailed(false) {
@@ -239,10 +244,10 @@ public:
 
     int getNextStop() {
         if (!dropQueue.isEmpty()) {
-            return dropQueue.peek(); // Prioritize drop-offs
+            return dropQueue.peek();
         }
         if (!pickQueue.isEmpty()) {
-            return pickQueue.peek(); // Handle pick-ups if no drop-offs
+            return pickQueue.peek();
         }
         return -1;
     }
@@ -257,7 +262,6 @@ public:
             return;
         }
 
-        // Check if the elevator is already at the requested floor
         if (currentFloor == floor) {
             if (isPickRequest) {
                 cout << "Elevator is already at floor " << floor << ". User has been picked up.\n";
@@ -269,7 +273,6 @@ public:
             return;
         }
 
-        // Check if the same floor request already exists in the queue
         bool requestExists = false;
         if (isPickRequest) {
             for (int i = 0; i < pickQueue.getSize(); i++) {
@@ -312,17 +315,14 @@ public:
             return;
         }
 
-        // Determine the next stop
         int nextFloor = -1;
 
-        // Prioritize drop-offs over pick-ups
         if (!dropQueue.isEmpty()) {
-            nextFloor = dropQueue.peek(); // Next stop is the closest drop-off request
+            nextFloor = dropQueue.peek();
         } else if (!pickQueue.isEmpty()) {
-            nextFloor = pickQueue.peek(); // If no drop-offs, handle pick-ups
+            nextFloor = pickQueue.peek();
         }
 
-        // Move the elevator
         if (nextFloor > currentFloor) {
             direction = "up";
             while (currentFloor < nextFloor) {
@@ -339,14 +339,12 @@ public:
             }
         }
 
-        // Remove the processed floor from the appropriate queue
         if (!dropQueue.isEmpty() && dropQueue.peek() == currentFloor) {
-            dropQueue.dequeue(); // Process drop-off request
+            dropQueue.dequeue();
         } else if (!pickQueue.isEmpty() && pickQueue.peek() == currentFloor) {
-            pickQueue.dequeue(); // Process pick-up request
+            pickQueue.dequeue();
         }
 
-        // Update direction if no more requests
         if (pickQueue.isEmpty() && dropQueue.isEmpty()) {
             direction = "idle";
             cout << "Elevator is now idle.\n";
@@ -355,8 +353,7 @@ public:
     }
 
     void displayState() {
-        // Use an array to represent the elevator's current state
-        string state[3]; // Array to store current floor, direction, and next stop
+        string state[3];
         state[0] = "Current Floor: " + to_string(currentFloor);
         state[1] = "Direction: " + direction;
         if (!pickQueue.isEmpty() || !dropQueue.isEmpty()) {
@@ -365,7 +362,6 @@ public:
             state[2] = "Next Stop: None";
         }
 
-        // Display the state using the array
         cout << "\n================ ELEVATOR STATE ================\n";
         for (int i = 0; i < 3; i++) {
             cout << state[i] << "\n";
@@ -385,7 +381,6 @@ public:
         cout << "================================================\n";
     }
 
-    // Reset the elevator to its initial state
     void reset() {
         currentFloor = 1;
         direction = "idle";
@@ -398,14 +393,13 @@ public:
         while (!history.isEmpty()) {
             history.pop();
         }
-        isFailed = false; // Clear the failure flag
+        isFailed = false;
         cout << "Elevator has been reset to floor 1.\n";
         logActivity("Elevator reset to floor 1.");
     }
 
-    // Simulate elevator failure
     void simulateFailure() {
-        isFailed = true; // Set the failure flag
+        isFailed = true;
         cout << "Elevator failure simulated! Elevator is stuck on floor " << currentFloor << ".\n";
         logActivity("Elevator failure simulated on floor " + to_string(currentFloor));
     }
@@ -422,10 +416,9 @@ void scenarioMenu(Elevator& elevator) {
         cout << "Enter your choice: ";
         cin >> scenarioChoice;
 
-        // Input validation for scenario choice
         if (cin.fail() || scenarioChoice < 1 || scenarioChoice > 3) {
-            cin.clear(); // Clear the error flag
-            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Discard invalid input
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
             cout << "Invalid choice. Please enter a number between 1 and 3.\n";
             continue;
         }
@@ -458,44 +451,42 @@ int main() {
         cout << "4. Display Request Queue\n";
         cout << "5. Scenario Menu\n";
         cout << "6. View Activity Log\n";
-        cout << "7. Exit\n";
+        cout << "7. Clear Activity Log\n";
+        cout << "8. Exit\n";
         cout << "=====================================================\n";
         cout << "Enter your choice: ";
         cin >> choice;
 
-        // Input validation for main menu choice
-        if (cin.fail() || choice < 1 || choice > 7) {
-            cin.clear(); // Clear the error flag
-            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Discard invalid input
-            cout << "Invalid choice. Please enter a number between 1 and 7.\n";
+        if (cin.fail() || choice < 1 || choice > 8) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Invalid choice. Please enter a number between 1 and 8.\n";
             continue;
         }
 
         switch (choice) {
             case 1: {
-                // Input validation for floor number
                 while (true) {
                     cout << "Enter floor (1-" << MAX_FLOORS << "): ";
                     cin >> floor;
                     if (cin.fail() || floor < 1 || floor > MAX_FLOORS) {
-                        cin.clear(); // Clear the error flag
-                        cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Discard invalid input
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
                         cout << "Invalid input. Please enter a number between 1 and " << MAX_FLOORS << ".\n";
                     } else {
-                        break; // Valid input, exit the loop
+                        break;
                     }
                 }
 
-                // Input validation for request type (y/n)
                 while (true) {
                     cout << "For pick-up? (y/n): ";
                     cin >> requestType;
                     if (cin.fail() || (requestType != 'y' && requestType != 'Y' && requestType != 'n' && requestType != 'N')) {
-                        cin.clear(); // Clear the error flag
-                        cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Discard invalid input
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
                         cout << "Invalid input. Please enter 'y' for yes or 'n' for no.\n";
                     } else {
-                        break; // Valid input, exit the loop
+                        break;
                     }
                 }
 
@@ -518,6 +509,9 @@ int main() {
                 viewLogFile();
                 break;
             case 7:
+                clearLogFile();
+                break;
+            case 8:
                 cout << "Exiting program. Goodbye!\n";
                 logActivity("Program exited.");
                 return 0;
