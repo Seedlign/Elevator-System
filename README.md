@@ -5,7 +5,8 @@
 
 **Group 1 - ODD: Algorithms 2025**
 
-This project simulates an elevator system with features like floor requests, movement prioritization, and scenario handling (e.g., elevator failure). The system uses **min-heap** and **max-heap** data structures to manage pickup and dropoff requests efficiently.
+This project simulates an elevator system with features like floor requests, movement prioritization, and scenario handling (e.g., elevator failure). The system uses **min-heap** and **max-heap** data structures to manage pickup and dropoff requests efficiently. It also effectively uses **queue** for storing request, **stack** to keep track of recently visted floors, **file handling** to store the logs
+**array** for display of state.
 
 ---
 
