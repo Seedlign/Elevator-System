@@ -1,0 +1,197 @@
+Elevator initialized at floor 1.
+Floor request added: 3
+Elevator initialized at floor 1.
+Elevator initialized at floor 1.
+Elevator initialized at floor 1.
+Floor request added: 3
+Floor request added: 2
+Floor request added: 4
+Moved to floor: 2
+Moved to floor: 3
+Moved to floor: 2
+Elevator is now idle.
+Elevator initialized at floor 1.
+Floor request added: 2
+Moved to floor: 2
+Elevator is now idle.
+Floor request added: 5
+Floor request added: 6
+Moved to floor: 3
+Moved to floor: 4
+Moved to floor: 5
+Elevator failure simulated on floor 5
+Floor request added: 7
+Moved to floor: 6
+Moved to floor: 7
+Floor request added: 2
+Elevator initialized at floor 1.
+Floor request added: 2
+Moved to floor: 2 (Direction: up)
+Elevator is now idle.
+Floor request added: 3
+Floor request added: 4
+Floor request added: 5
+Moved to floor: 3 (Direction: up)
+Moved to floor: 4 (Direction: up)
+Moved to floor: 3 (Direction: down)
+Elevator is now idle.
+Elevator initialized at floor 1.
+Floor request added: 2
+Floor request added: 3
+Floor request added: 4
+Floor request added: 5
+Elevator initialized at floor 1.
+Floor request added: 2
+Floor request added: 3
+Floor request added: 4
+Moved to floor: 2 (Direction: up)
+Moved to floor: 3 (Direction: up)
+Moved to floor: 4 (Direction: up)
+Floor request added: 3
+Floor request added: 5
+Moved to floor: 3 (Direction: down)
+Moved to floor: 2 (Direction: down)
+Elevator is now idle.
+Elevator initialized at floor 1.
+Pick-up request added: 2
+Pick-up request added: 3
+Moved to floor: 2 (Direction: up)
+Moved to floor: 3 (Direction: up)
+Moved to floor: 2 (Direction: down)
+Elevator is now idle.
+Pick-up request added: 3
+Drop-off request added: 6
+Moved to floor: 3 (Direction: up)
+Moved to floor: 4 (Direction: up)
+Moved to floor: 5 (Direction: up)
+Moved to floor: 6 (Direction: up)
+Elevator is now idle.
+Drop-off request added: 1
+Pick-up request added: 3
+Moved to floor: 5 (Direction: down)
+Moved to floor: 4 (Direction: down)
+Moved to floor: 3 (Direction: down)
+Moved to floor: 2 (Direction: down)
+Moved to floor: 1 (Direction: down)
+Moved to floor: 2 (Direction: up)
+Moved to floor: 3 (Direction: up)
+Elevator is now idle.
+Elevator initialized at floor 1.
+Pick-up request added: 3
+Moved to floor: 2 (Direction: up)
+Moved to floor: 3 (Direction: up)
+Elevator is now idle.
+Drop-off request added: 2
+Pick-up request added: 5
+Moved to floor: 2 (Direction: down)
+Moved to floor: 3 (Direction: up)
+Moved to floor: 4 (Direction: up)
+Moved to floor: 5 (Direction: up)
+Elevator is now idle.
+Elevator initialized at floor 1.
+Elevator failure simulated on floor 1
+Pick-up request added: 2
+Moved to floor: 2 (Direction: up)
+Elevator is now idle.
+Elevator initialized at floor 1.
+Pick-up request added: 3
+Pick-up request added: 7
+Pick-up request added: 2
+Moved to floor: 2 (Direction: up)
+Moved to floor: 3 (Direction: up)
+Moved to floor: 4 (Direction: up)
+Moved to floor: 5 (Direction: up)
+Moved to floor: 6 (Direction: up)
+Moved to floor: 7 (Direction: up)
+Moved to floor: 6 (Direction: down)
+Moved to floor: 5 (Direction: down)
+Moved to floor: 4 (Direction: down)
+Moved to floor: 3 (Direction: down)
+Moved to floor: 2 (Direction: down)
+Elevator is now idle.
+Drop-off request added: 8
+Pick-up request added: 3
+Moved to floor: 3 (Direction: up)
+Moved to floor: 4 (Direction: up)
+Moved to floor: 5 (Direction: up)
+Moved to floor: 6 (Direction: up)
+Moved to floor: 7 (Direction: up)
+Moved to floor: 8 (Direction: up)
+Elevator is now idle.
+Elevator failure simulated on floor 8
+Elevator initialized at floor 1.
+Pick-up request added: 3
+Drop-off request added: 3
+Moved to floor: 2 (Direction: up)
+Moved to floor: 3 (Direction: up)
+Elevator is now idle.
+Elevator initialized at floor 1.
+Elevator initialized at floor 1.
+Pick-up request added: 8
+Elevator initialized at floor 1.
+Pick-up request added: 2
+Pick-up request added: 3
+Drop-off request added: 7
+Elevator initialized at floor 1.
+Pick-up request added: 3
+Pick-up request added: 6
+Drop-off request added: 8
+Moved to floor: 2 (Direction: up)
+Moved to floor: 3 (Direction: up)
+Moved to floor: 4 (Direction: up)
+Moved to floor: 5 (Direction: up)
+Moved to floor: 6 (Direction: up)
+Moved to floor: 5 (Direction: down)
+Moved to floor: 4 (Direction: down)
+Moved to floor: 3 (Direction: down)
+Moved to floor: 4 (Direction: up)
+Moved to floor: 5 (Direction: up)
+Moved to floor: 6 (Direction: up)
+Moved to floor: 7 (Direction: up)
+Moved to floor: 8 (Direction: up)
+Elevator is now idle.
+Elevator initialized at floor 1.
+Pick-up request added: 2
+Pick-up request added: 5
+Drop-off request added: 8
+Moved to floor: 2 (Direction: up)
+Moved to floor: 3 (Direction: up)
+Moved to floor: 4 (Direction: up)
+Moved to floor: 5 (Direction: up)
+Moved to floor: 6 (Direction: up)
+Moved to floor: 7 (Direction: up)
+Moved to floor: 8 (Direction: up)
+Moved to floor: 7 (Direction: down)
+Moved to floor: 6 (Direction: down)
+Moved to floor: 5 (Direction: down)
+Moved to floor: 4 (Direction: down)
+Moved to floor: 3 (Direction: down)
+Moved to floor: 2 (Direction: down)
+Elevator is now idle.
+Pick-up request added: 1
+Moved to floor: 1 (Direction: down)
+Elevator is now idle.
+Drop-off request added: 5
+Moved to floor: 2 (Direction: up)
+Moved to floor: 3 (Direction: up)
+Moved to floor: 4 (Direction: up)
+Moved to floor: 5 (Direction: up)
+Elevator is now idle.
+Pick-up request added: 2
+Moved to floor: 4 (Direction: down)
+Moved to floor: 3 (Direction: down)
+Moved to floor: 2 (Direction: down)
+Elevator is now idle.
+Drop-off request added: 4
+Pick-up request added: 3
+Drop-off request added: 6
+Drop-off request added: 5
+Moved to floor: 3 (Direction: up)
+Moved to floor: 4 (Direction: up)
+Moved to floor: 5 (Direction: up)
+Moved to floor: 6 (Direction: up)
+Moved to floor: 5 (Direction: down)
+Moved to floor: 4 (Direction: down)
+Moved to floor: 3 (Direction: down)
+Elevator is now idle.
+Program exited.
